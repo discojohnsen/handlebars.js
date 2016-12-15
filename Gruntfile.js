@@ -149,7 +149,7 @@ module.exports = function(grunt) {
         },
 
         files: ['src/*', 'lib/**/*.js', 'spec/**/*.js'],
-        tasks: ['build', 'tests', 'test']
+        tasks: ['build']
       }
     }
   });
@@ -163,9 +163,9 @@ module.exports = function(grunt) {
 
   this.registerTask('node', ['babel:cjs']);
   this.registerTask('globals', ['webpack']);
-  this.registerTask('tests', ['concat:tests']);
+  // this.registerTask('tests', ['concat:tests']);
 
-  this.registerTask('release', 'Build final packages', ['eslint', 'uglify', 'test:min', 'copy:dist', 'copy:components']);
+  this.registerTask('release', 'Build final packages', ['eslint', 'uglify', 'copy:dist', 'copy:components']);
 
   // Load tasks from npm
   grunt.loadNpmTasks('grunt-contrib-clean');
@@ -182,10 +182,10 @@ module.exports = function(grunt) {
   grunt.task.loadTasks('tasks');
 
   grunt.registerTask('bench', ['metrics']);
-  grunt.registerTask('sauce', process.env.SAUCE_USERNAME ? ['tests', 'connect', 'saucelabs-mocha'] : []);
+  grunt.registerTask('sauce', process.env.SAUCE_USERNAME ? ['connect', 'saucelabs-mocha'] : []);
 
   grunt.registerTask('travis', process.env.PUBLISH ? ['default', 'sauce', 'metrics', 'publish:latest'] : ['default']);
 
   grunt.registerTask('dev', ['clean', 'connect', 'watch']);
-  grunt.registerTask('default', ['clean', 'build', 'test', 'release']);
+  grunt.registerTask('default', ['clean', 'build', 'release']);
 };
