@@ -1,6 +1,6 @@
 {
-  "name": "handlebars",
-  "barename": "handlebars",
+  "name": "patternengine-node-hbs",
+  "barename": "patternengine-node-hbs",
   "version": "4.0.5",
   "description": "Handlebars provides the power necessary to let you build semantic templates effectively with no frustration",
   "homepage": "http://www.handlebarsjs.com/",
@@ -61,7 +61,7 @@
     "test": "grunt"
   },
   "jspm": {
-    "main": "handlebars",
+    "main": "patternengine-node-hbs",
     "directories": {
       "lib": "dist/cjs"
     },
